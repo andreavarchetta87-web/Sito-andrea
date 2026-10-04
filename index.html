@@ -1,27 +1,624 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <title>Andrea Varchetta</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrea Varchetta | Consigliere Comunale Quarto - Campi Flegrei</title>
+<meta name="description" content="Il portale di Andrea Varchetta, Consigliere Comunale di Quarto: attività, curriculum e contatti al servizio dei cittadini dei Campi Flegrei.">
+<meta property="og:site_name" content="Andrea Varchetta | Consigliere Comunale Quarto">
+<meta property="og:title" content="Andrea Varchetta | Consigliere Comunale Quarto - Campi Flegrei">
+<meta property="og:description" content="Il portale di Andrea Varchetta, Consigliere Comunale di Quarto: attività, curriculum e contatti al servizio dei cittadini dei Campi Flegrei.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+brand: {
+50: '#eef2ff',
+100: '#e0e7ff',
+600: '#4f46e5',
+700: '#4338ca',
+800: '#3730a3',
+900: '#312e81',
+}
+}
+}
+}
+}
+</script>
+<!-- FontAwesome per le icone -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
-    <h1>Contattami</h1>
-    <form action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="29019eb1-c5fd-4112-b617-07b6d41f532f">
-      <div>
-        <label>Nome</label><br>
-        <input type="text" name="name" required>
-      </div>
-      <div>
-        <label>Email</label><br>
-        <input type="email" name="email" required>
-      </div>
-      <div>
-        <label>Messaggio</label><br>
-        <textarea name="message" required></textarea>
-      </div>
-      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-      <button type="submit">Invia Messaggio</button>
-    </form>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+
+<!-- Top Bar Contatti Rapidi -->
+<div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 hidden md:block">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex items-center space-x-6">
+<span><i class="fa-solid fa-location-dot text-brand-600 mr-1.5"></i> Comune di Quarto - Campi Flegrei</span>
+<a href="mailto:andreavarchetta87@gmail.com" class="hover:text-white transition"><i class="fa-solid fa-envelope text-brand-600 mr-1.5"></i> Invia un'Email Diretta</a>
+<a href="https://wa.me/390810669769" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-whatsapp text-green-500 mr-1.5"></i> 081 0669769</a>
+</div>
+<div class="flex items-center space-x-4">
+<a href="https://www.facebook.com/AndreaVarchetta" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="https://www.instagram.com/andrea.varchetta" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+</div>
+</div>
+</div>
+
+<!-- Navbar / Header -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<a href="#" class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-brand-700 text-white flex items-center justify-center font-bold text-lg shadow-md">
+AV
+</div>
+<div>
+<span class="block font-bold text-lg text-slate-900 leading-tight">Andrea Varchetta</span>
+<span class="text-xs font-semibold tracking-wider text-brand-700 uppercase">Consigliere Comunale Quarto</span>
+</div>
+</a>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center space-x-6 font-medium text-sm text-slate-600">
+<a href="#chi-sono" class="hover:text-brand-700 transition">Chi Sono</a>
+<a href="#curriculum" class="hover:text-brand-700 transition">Curriculum</a>
+<a href="#attivita" class="hover:text-brand-700 transition">Attività Svolta</a>
+<a href="#iscriviti" class="hover:text-brand-700 transition">Unisciti</a>
+<a href="#segnalazioni" class="hover:text-brand-700 transition">Segnalazioni</a>
+<a href="#vota" class="hover:text-brand-700 transition">Sondaggi</a>
+<a href="#contatti" class="bg-brand-700 text-white px-4 py-2.5 rounded-lg shadow hover:bg-brand-800 transition">Contattami</a>
+</nav>
+<!-- Mobile Menu Button -->
+<button id="menu-btn" class="md:hidden text-slate-700 focus:outline-none text-xl p-2">
+<i class="fa-solid fa-bars"></i>
+</button>
+</div>
+<!-- Mobile Dropdown -->
+<div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+<a href="#chi-sono" class="block py-2 text-slate-700 hover:text-brand-700 font-medium">Chi Sono</a>
+<a href="#curriculum" class="block py-2 text-slate-700 hover:text-brand-700 font-medium">Curriculum</a>
+<a href="#attivita" class="block py-2 text-slate-700 hover:text-brand-700 font-medium">Attività Svolta</a>
+<a href="#iscriviti" class="block py-2 text-slate-700 hover:text-brand-700 font-medium">Iscriviti alla Community</a>
+<a href="#segnalazioni" class="block py-2 text-slate-700 hover:text-brand-700 font-medium">Segnalazioni & Proposte</a>
+<a href="#vota" class="block py-2 text-slate-700 hover:text-brand-700 font-medium">Sondaggi & Voto</a>
+<a href="#contatti" class="block py-2 text-brand-700 font-bold">Contattami</a>
+</div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-slate-900 via-brand-900 to-slate-900 text-white py-20 lg:py-28 overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+<span class="inline-flex items-center space-x-2 bg-brand-800/80 border border-brand-600/50 text-brand-100 text-xs font-semibold px-3.5 py-1.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+<span>Sempre al servizio dei cittadini di Quarto e dei Campi Flegrei</span>
+</span>
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+Ascolto, Trasparenza e Azione per Quarto
+</h1>
+<p class="text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0">
+Benvenuto nel portale del cittadino di Andrea Varchetta, Consigliere Comunale. Impegno costante per la tutela, la sicurezza del territorio e la nostra comunità nei Campi Flegrei.
+</p>
+<div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+<a href="#iscriviti" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center space-x-2">
+<i class="fa-solid fa-user-plus"></i>
+<span>Iscriviti alla Community</span>
+</a>
+<a href="https://wa.me/390810669769" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition flex items-center justify-center space-x-2">
+<i class="fa-brands fa-whatsapp text-xl"></i>
+<span>Scrivimi su WhatsApp</span>
+</a>
+</div>
+</div>
+<!-- Card Profilo -->
+<div class="lg:col-span-5 flex justify-center">
+<div class="relative w-full max-w-sm bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl shadow-2xl text-center">
+<img src="/img/andrea-varchetta.jpg" alt="Andrea Varchetta durante un intervento in aula" width="1024" height="1024" fetchpriority="high" decoding="async" class="w-full aspect-square mx-auto mb-6 rounded-2xl object-cover border-2 border-white/30 shadow-lg">
+<h2 class="text-2xl font-bold text-white">Andrea Varchetta</h2>
+<p class="text-brand-200 text-sm font-medium mb-1">Consigliere Comunale Quarto</p>
+<p class="text-slate-300 text-xs mb-6">Componente ANCI Nazionale & Commissioni Comunali</p>
+<div class="border-t border-white/10 pt-4 grid grid-cols-3 gap-2 text-center text-xs text-slate-300">
+<div>
+<span class="block font-bold text-white text-base">24/7</span>
+<span>Ascolto</span>
+</div>
+<div>
+<span class="block font-bold text-white text-base">100%</span>
+<span>Trasparenza</span>
+</div>
+<div>
+<span class="block font-bold text-white text-base">Campi Flegrei</span>
+<span>Territorio</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Chi Sono -->
+<section id="chi-sono" class="py-20 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-5">
+<div class="rounded-3xl p-12 bg-gradient-to-br from-brand-900 to-slate-900 text-white shadow-xl border border-slate-200 text-center space-y-4">
+<div class="w-24 h-24 mx-auto rounded-full bg-brand-700/50 border-2 border-brand-400 flex items-center justify-center text-4xl">
+<i class="fa-solid fa-handshake"></i>
+</div>
+<h3 class="text-2xl font-bold">Vicinanza al Cittadino</h3>
+<p class="text-slate-300 text-sm leading-relaxed">
+Un punto di riferimento costante sul territorio per raccogliere istanze, proposte e criticità della nostra comunità.
+</p>
+</div>
+</div>
+<div class="lg:col-span-7 space-y-6">
+<span class="text-brand-700 font-semibold text-xs tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full">Il Mio Impegno</span>
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Un impegno concreto per la nostra città e i Campi Flegrei</h2>
+<p class="text-slate-600 text-lg leading-relaxed">
+Credo fermamente in una politica partecipativa che parte dall'ascolto diretto delle esigenze dei cittadini di Quarto. Trasparenza, presenza e lavoro costante per migliorare la qualità della vita nella nostra comunità e tutelare il nostro territorio flegreo.
+</p>
+
+<div class="space-y-3 pt-2">
+<div class="flex items-start space-x-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+<i class="fa-solid fa-building-flag text-brand-700 text-lg mt-0.5"></i>
+<div>
+<h3 class="font-bold text-slate-900 text-sm">Consigliere Comunale</h3>
+<p class="text-xs text-slate-600">Comune di Quarto</p>
+</div>
+</div>
+
+<div class="flex items-start space-x-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+<i class="fa-solid fa-hand-holding-heart text-brand-700 text-lg mt-0.5"></i>
+<div>
+<h3 class="font-bold text-slate-900 text-sm">Componente Commissione Servizi Sociali</h3>
+<p class="text-xs text-slate-600">Comune di Quarto</p>
+</div>
+</div>
+
+<div class="flex items-start space-x-3 p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+<i class="fa-solid fa-landmark-flag text-brand-700 text-lg mt-0.5"></i>
+<div>
+<h3 class="font-bold text-slate-900 text-sm">Componente Commissione permanente "Pubblica Amministrazione, Personale e Relazioni Sindacali"</h3>
+<p class="text-xs text-slate-600">Consiglio Nazionale dell'ANCI - Associazione Nazionale Comuni Italiani</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Sezione Curriculum -->
+<section id="curriculum" class="py-20 bg-slate-100 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center space-y-4 mb-16">
+<span class="text-brand-700 font-semibold text-xs tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full">Background Professionale</span>
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Curriculum Vitae</h2>
+<p class="text-xl font-semibold text-brand-700">Profilo professionale, formativo e istituzionale</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Esperienza Professionale -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-brand-100 text-brand-700 rounded-xl flex items-center justify-center text-xl mb-6">
+<i class="fa-solid fa-briefcase"></i>
+</div>
+<h3 class="font-bold text-slate-900 text-xl mb-4">Esperienza</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+Funzionario nella Giunta Regionale della Campania con incarico di Elevata Qualificazione.
+</p>
+</div>
+</div>
+
+<!-- Formazione -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center text-xl mb-6">
+<i class="fa-solid fa-graduation-cap"></i>
+</div>
+<h3 class="font-bold text-slate-900 text-xl mb-4">Formazione</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+Laurea Magistrale in Relazioni Internazionali per lo Sviluppo Economico, Master in Studi Giuridici e Laurea in Scienze Politiche.
+</p>
+</div>
+</div>
+
+<!-- Impegno Istituzionale -->
+<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl mb-6">
+<i class="fa-solid fa-landmark"></i>
+</div>
+<h3 class="font-bold text-slate-900 text-xl mb-4">Istituzioni</h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+Capogruppo Consiliare al Comune di Quarto e componente della Commissione permanente PA e Personale del Consiglio Nazionale ANCI.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Resoconto Attività Svolta Completo -->
+<section id="attivita" class="py-20 bg-slate-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center space-y-4 mb-16">
+<span class="text-brand-700 font-semibold text-xs tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full">Resoconto Ufficiale</span>
+<h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Resoconto dell'Attività Svolta</h2>
+<p class="text-xl font-semibold text-brand-700">Il mio impegno concreto per Quarto e i Campi Flegrei — Fatti, non parole!</p>
+</div>
+
+<!-- Grid delle 12 Attività -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-gavel"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Legalità e Beni Confiscati</h3>
+<p class="text-sm text-slate-600">Destinazione dei beni confiscati per nuovi servizi: Scuola Media, Piscina Comunale e Giudice di Pace.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-child"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Nuovi Asili Nido</h3>
+<p class="text-sm text-slate-600">Potenziamento dell'offerta formativa ed educativa per l'infanzia a supporto delle famiglie.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-pink-100 text-pink-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-venus"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Consulta delle Donne</h3>
+<p class="text-sm text-slate-600">Creazione di uno spazio istituzionale dedicato all'ascolto, al confronto e all'aggregazione femminile.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-users"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Centro Anziani</h3>
+<p class="text-sm text-slate-600">Istituzione di un luogo dedicato all'aggregazione, al benessere e alla fornitura di servizi per gli anziani.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-red-100 text-red-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-handshake-simple"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Salario Minimo Comunale</h3>
+<p class="text-sm text-slate-600">Tutela della dignità e dei diritti dei lavoratori impiegati negli appalti pubblici comunali.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-lime-100 text-lime-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-house-chimney-window"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Piano Urbanistico a Vani Zero</h3>
+<p class="text-sm text-slate-600">Promozione dello sviluppo sostenibile del territorio senza consumo ulteriore di suolo.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-green-100 text-green-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-earth-americas"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Protocollo Plastic Free</h3>
+<p class="text-sm text-slate-600">Sottoscritto il protocollo per la salvaguardia dell'ambiente e la pulizia del territorio comunale.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-orange-100 text-orange-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-monument"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Tutela della Nostra Storia</h3>
+<p class="text-sm text-slate-600">Promozione, recupero e valorizzazione del patrimonio storico e archeologico di Villa del Torchio.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-masks-theater"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Arte e Cultura</h3>
+<p class="text-sm text-slate-600">Sostegno finanziario dedicato alla Rassegna teatrale "La Fescina" e al rilancio culturale cittadino.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-people-group"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Associazionismo</h3>
+<p class="text-sm text-slate-600">Sostegno alle Associazioni flegree per la costruzione di una comunità più forte, coesa e partecipe.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-sky-100 text-sky-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-bullhorn"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Eventi Divulgativi</h3>
+<p class="text-sm text-slate-600">Organizzazione di momenti pubblici per informare, tutelare e far valere i diritti dei cittadini.</p>
+</div>
+
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition">
+<div class="w-12 h-12 bg-indigo-100 text-indigo-700 rounded-xl flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-heart-pulse"></i></div>
+<h3 class="font-bold text-slate-900 text-lg mb-2">Tutela Sociale e Consumatori</h3>
+<ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+<li><strong>Pensionati:</strong> Interventi e assistenza indennità INPS.</li>
+<li><strong>Disabilità:</strong> Supporto per alunni e riconoscimento diritti.</li>
+<li><strong>Consumatori:</strong> Assistenza bollette e utenze.</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ISCRIVITI ALLA COMMUNITY / NEWSLETTER -->
+<section id="iscriviti" class="py-20 bg-gradient-to-r from-brand-900 to-slate-900 text-white">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 p-8 sm:p-12 text-center space-y-6">
+<span class="bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Rimani Aggiornato</span>
+<h2 class="text-3xl sm:text-4xl font-extrabold">Iscriviti alla Community WhatsApp & Email</h2>
+<p class="text-slate-300 max-w-xl mx-auto">
+Inserisci i tuoi dati per ricevere direttamente su WhatsApp ed Email gli aggiornamenti trasparenti, le comunicazioni relative a Quarto e le notizie sui Campi Flegrei.
+</p>
+
+<form id="subscribe-form" class="space-y-4 max-w-2xl mx-auto text-left" onsubmit="sendToWhatsApp(event)">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Nome e Cognome *</label>
+<input type="text" id="sub-nome" required class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="Es. Mario Rossi">
+</div>
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Email</label>
+<input type="email" id="sub-email" class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="nome@email.it">
+</div>
+</div>
+
+<div>
+<label class="block text-xs font-medium text-slate-300 mb-1">Il tuo Numero WhatsApp *</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 text-sm">+39</span>
+<input type="tel" id="sub-whatsapp" required class="w-full pl-12 pr-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-400" placeholder="333 1234567">
+</div>
+</div>
+
+<div class="flex items-center space-x-3 pt-2">
+<input type="checkbox" id="sub-privacy" required class="w-4 h-4 text-brand-600 rounded border-white/30 focus:ring-brand-500">
+<label for="sub-privacy" class="text-xs text-slate-300">Acconsento al trattamento dei dati per la ricezione di comunicazioni relative al Comune di Quarto e ai Campi Flegrei.</label>
+</div>
+
+<button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2 text-lg">
+<i class="fa-brands fa-whatsapp text-2xl"></i>
+<span>Iscriviti tramite WhatsApp</span>
+</button>
+</form>
+
+<div id="subscribe-success" class="hidden p-6 bg-green-500/20 border border-green-400/30 text-white rounded-2xl space-y-2">
+<i class="fa-solid fa-circle-check text-4xl text-green-400"></i>
+<h3 class="font-bold text-xl">Apertura WhatsApp in corso...</h3>
+<p class="text-sm text-slate-200">Invia il messaggio precompilato per completare la registrazione al servizio notifiche.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Segnalazioni e Proposte (COLLEGATO A WEB3FORMS) -->
+<section id="segnalazioni" class="py-20 bg-white">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-slate-50 rounded-3xl shadow-xl border border-slate-200 p-8 sm:p-12">
+<div class="text-center space-y-3 mb-10">
+<span class="text-brand-700 font-semibold text-xs tracking-wider uppercase bg-brand-100 px-3 py-1 rounded-full">Sportello del Cittadino</span>
+<h2 class="text-3xl font-bold text-slate-900">Invia una Segnalazione o Proposta</h2>
+<p class="text-slate-600">Hai riscontrato un disservizio a Quarto, problemi relativi al territorio flegreo o hai un'idea per migliorare la nostra città? Compila il modulo.</p>
+</div>
+
+<form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+  <!-- Chiave Web3Forms inserita correttamente -->
+  <input type="hidden" name="access_key" value="32b01f65-8f60-4f3c-9371-de780f2fc270">
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Nome e Cognome *</label>
+      <input type="text" name="name" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Mario Rossi">
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Email di Contatto *</label>
+      <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="mario@email.it">
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Telefono / WhatsApp</label>
+      <input type="tel" name="telefono" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="081 0669769">
+    </div>
+    <div>
+      <label class="block text-sm font-semibold text-slate-700 mb-2">Tipo di Richiesta *</label>
+      <select name="tipo" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white">
+        <option value="segnalazione">Segnalazione Disservizio / Problema</option>
+        <option value="flegrei">Bradisismo / Sicurezza Territorio Campi Flegrei</option>
+        <option value="proposta">Proposta di Miglioramento</option>
+        <option value="sociale">Richiesta / Assistenza Servizi Sociali</option>
+        <option value="altro">Altro / Informazioni</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label class="block text-sm font-semibold text-slate-700 mb-2">Zona / Quartiere di Quarto</label>
+    <input type="text" name="zona" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Es. Centro, Periferia, Corso Italia...">
+  </div>
+
+  <div>
+    <label class="block text-sm font-semibold text-slate-700 mb-2">Descrizione dettagliata *</label>
+    <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-600 focus:border-brand-600 outline-none transition bg-white" placeholder="Descrivi qui il problema o la tua proposta nel dettaglio..."></textarea>
+  </div>
+
+  <div class="flex items-center space-x-3">
+    <input type="checkbox" id="privacy" required class="w-5 h-5 text-brand-600 rounded border-slate-300 focus:ring-brand-500">
+    <label for="privacy" class="text-xs text-slate-500">Autorizzo il trattamento dei miei dati personali ai sensi del GDPR per la gestione della richiesta.</label>
+  </div>
+
+  <button type="submit" class="w-full bg-brand-700 hover:bg-brand-800 text-white font-bold py-4 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+    <i class="fa-solid fa-paper-plane"></i>
+    <span>Invia Segnalazione</span>
+  </button>
+</form>
+
+</div>
+</div>
+</section>
+
+<!-- Sondaggio / Vota -->
+<section id="vota" class="py-20 bg-slate-900 text-white">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-gradient-to-br from-slate-800 to-brand-900 rounded-3xl p-8 sm:p-12 shadow-xl border border-white/10">
+<div class="text-center space-y-3 mb-10">
+<span class="bg-brand-700/80 text-brand-100 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">Partecipa Ora</span>
+<h2 class="text-3xl font-bold">Sondaggio per Quarto e i Campi Flegrei</h2>
+<p class="text-slate-300">Quale priorità dovrebbe affrontare con urgenza l'amministrazione comunale?</p>
+</div>
+
+<div id="poll-container" class="space-y-4 max-w-2xl mx-auto">
+<button onclick="vote('verde')" class="poll-option w-full text-left bg-white/10 hover:bg-white/20 border border-white/20 p-4 rounded-xl transition flex justify-between items-center group">
+<span class="font-medium">Potenziamento servizi sociali, asili nido e centro anziani</span>
+<span class="poll-percent text-brand-300 font-bold hidden">0%</span>
+</button>
+<button onclick="vote('strade')" class="poll-option w-full text-left bg-white/10 hover:bg-white/20 border border-white/20 p-4 rounded-xl transition flex justify-between items-center group">
+<span class="font-medium">Manutenzione straordinaria strade e viabilità</span>
+<span class="poll-percent text-brand-300 font-bold hidden">0%</span>
+</button>
+<button onclick="vote('flegrei')" class="poll-option w-full text-left bg-white/10 hover:bg-white/20 border border-white/20 p-4 rounded-xl transition flex justify-between items-center group">
+<span class="font-medium">Sicurezza territoriale, prevenzione bradisismo e protezione civile nei Campi Flegrei</span>
+<span class="poll-percent text-brand-300 font-bold hidden">0%</span>
+</button>
+<button onclick="vote('giovani')" class="poll-option w-full text-left bg-white/10 hover:bg-white/20 border border-white/20 p-4 rounded-xl transition flex justify-between items-center group">
+<span class="font-medium">Sostegno ai giovani, cultura e associazionismo</span>
+<span class="poll-percent text-brand-300 font-bold hidden">0%</span>
+</button>
+</div>
+<div id="poll-voted-msg" class="hidden text-center mt-6 text-green-400 font-semibold text-sm">
+<i class="fa-solid fa-check-circle mr-1"></i> Grazie per aver espresso il tuo voto!
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contatti e Social Section -->
+<section id="contatti" class="py-20 bg-white border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
+<span class="text-brand-700 font-semibold text-xs tracking-wider uppercase bg-brand-50 px-3 py-1 rounded-full">Contatto Diretto</span>
+<h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">Canali Ufficiali e Social</h2>
+<p class="text-slate-600 text-lg">Per qualsiasi richiesta, confronto o segnalazione per la città di Quarto e l'area dei Campi Flegrei.</p>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- WhatsApp -->
+<a href="https://wa.me/390810669769" target="_blank" class="bg-slate-50 border border-slate-200 hover:border-green-500 p-8 rounded-2xl text-center group transition shadow-sm hover:shadow-md">
+<div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4 group-hover:scale-110 transition">
+<i class="fa-brands fa-whatsapp"></i>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">WhatsApp</h3>
+<p class="text-slate-500 text-sm mb-4">081 0669769</p>
+<span class="text-green-600 font-semibold text-sm inline-flex items-center space-x-1"><span>Scrivici subito</span> <i class="fa-solid fa-arrow-right text-xs"></i></span>
+</a>
+
+<!-- Email -->
+<a href="mailto:andreavarchetta87@gmail.com" class="bg-slate-50 border border-slate-200 hover:border-brand-600 p-8 rounded-2xl text-center group transition shadow-sm hover:shadow-md">
+<div class="w-16 h-16 bg-brand-50 text-brand-700 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 group-hover:scale-110 transition">
+<i class="fa-solid fa-envelope"></i>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Email Diretta</h3>
+<p class="text-slate-500 text-sm mb-4">Scrivimi un messaggio</p>
+<span class="text-brand-700 font-semibold text-sm inline-flex items-center space-x-1"><span>Invia un'email</span> <i class="fa-solid fa-arrow-right text-xs"></i></span>
+</a>
+
+<!-- Facebook -->
+<a href="https://www.facebook.com/AndreaVarchetta" target="_blank" class="bg-slate-50 border border-slate-200 hover:border-blue-600 p-8 rounded-2xl text-center group transition shadow-sm hover:shadow-md">
+<div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 group-hover:scale-110 transition">
+<i class="fa-brands fa-facebook-f"></i>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Facebook</h3>
+<p class="text-slate-500 text-sm mb-4">Pagina Ufficiale</p>
+<span class="text-blue-600 font-semibold text-sm inline-flex items-center space-x-1"><span>Visita profilo</span> <i class="fa-solid fa-arrow-right text-xs"></i></span>
+</a>
+
+<!-- Instagram -->
+<a href="https://www.instagram.com/andrea.varchetta" target="_blank" class="bg-slate-50 border border-slate-200 hover:border-pink-500 p-8 rounded-2xl text-center group transition shadow-sm hover:shadow-md">
+<div class="w-16 h-16 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 group-hover:scale-110 transition">
+<i class="fa-brands fa-instagram"></i>
+</div>
+<h3 class="font-bold text-slate-900 text-lg mb-1">Instagram</h3>
+<p class="text-slate-500 text-sm mb-4">@andrea.varchetta</p>
+<span class="text-pink-600 font-semibold text-sm inline-flex items-center space-x-1"><span>Segui su IG</span> <i class="fa-solid fa-arrow-right text-xs"></i></span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-brand-700 text-white flex items-center justify-center font-bold text-xs">
+AV
+</div>
+<div>
+<span class="block font-bold text-white">Andrea Varchetta</span>
+<span class="text-xs text-slate-400">Consigliere Comunale Quarto (Campi Flegrei)</span>
+</div>
+</div>
+<div class="flex space-x-6 text-sm">
+<a href="#chi-sono" class="hover:text-white transition">Chi Sono</a>
+<a href="#curriculum" class="hover:text-white transition">Curriculum</a>
+<a href="#attivita" class="hover:text-white transition">Attività Svolta</a>
+<a href="#iscriviti" class="hover:text-white transition">Iscriviti</a>
+<a href="#segnalazioni" class="hover:text-white transition">Segnalazioni</a>
+<a href="#contatti" class="hover:text-white transition">Contatti</a>
+</div>
+<div class="text-xs text-slate-500 text-center md:text-right">
+© 2026 Andrea Varchetta. Tutti i diritti riservati.<br>Portale di partecipazione civica per il Comune di Quarto ed i Campi Flegrei.
+</div>
+</div>
+</footer>
+
+<!-- Script interattivi -->
+<script>
+// Toggle mobile menu
+const btn = document.getElementById('menu-btn');
+const menu = document.getElementById('mobile-menu');
+btn.addEventListener('click', () => {
+menu.classList.toggle('hidden');
+});
+
+// Funzione di Invio Diretto a WhatsApp Business
+function sendToWhatsApp(e) {
+e.preventDefault();
+
+const nome = document.getElementById('sub-nome').value;
+const email = document.getElementById('sub-email').value || 'Non specificata';
+const waNumber = document.getElementById('sub-whatsapp').value;
+
+const testo = `Ciao Andrea, desidero iscrivermi alla community del Comune di Quarto e Campi Flegrei.%0A%0A*Nome e Cognome:* ${encodeURIComponent(nome)}%0AEmail: ${encodeURIComponent(email)}%0A*WhatsApp:* ${encodeURIComponent(waNumber)}`;
+
+const whatsappUrl = `https://wa.me/390810669769?text=${testo}`;
+
+document.getElementById('subscribe-form').style.display = 'none';
+document.getElementById('subscribe-success').classList.remove('hidden');
+
+setTimeout(() => {
+window.open(whatsappUrl, '_blank');
+}, 800);
+}
+
+// Gestione sondaggio interattivo
+const pollVotes = { verde: 42, strade: 58, flegrei: 64, giovani: 27 };
+
+function vote(option) {
+pollVotes[option]++;
+const total = Object.values(pollVotes).reduce((a, b) => a + b, 0);
+
+document.querySelectorAll('.poll-option').forEach(btn => {
+btn.style.pointerEvents = 'none';
+btn.classList.add('bg-white/20');
+
+const key = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+const count = pollVotes[key];
+const pct = Math.round((count / total) * 100);
+
+const percentSpan = btn.querySelector('.poll-percent');
+percentSpan.innerText = pct + '%';
+percentSpan.classList.remove('hidden');
+});
+
+document.getElementById('poll-voted-msg').classList.remove('hidden');
+}
+</script>
 </body>
 </html>
